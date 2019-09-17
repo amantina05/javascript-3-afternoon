@@ -1,4 +1,4 @@
-/* 
+/*
   Once you complete a problem, refresh ./classes.html in your browser and check to see if the problem's test(s) are passing.
   Passed tests will be indicated by a green circle.
   Failed tests will be indicated by a red X.
@@ -30,7 +30,18 @@
 */
 
 //Code Here
-
+class Employee {
+  constructor (first_name, last_name, email, age){
+    this.first_name = first_name
+    this.last_name = last_name
+    this.email = email
+    this.age = age
+  }
+  makeWidget () {
+    //return 'Dallin Anderson Widget'
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+}
 
 
 ////////// PROBLEM 2 //////////
@@ -50,8 +61,37 @@
 */
 
 //Code Here
+// class Manager {
+//   constructor (first_name, last_name, email, age, reports) {
+//     this.first_name = first_name
+//     this.last_name = last_name
+//     this.email = email
+//     this.age = age
+//     this.reports = []
+//   }
+//   hire (employee) {
+//     //pushes new employee to the empty array
+//     this.reports.push(employee)
+//   }
+//   fire (index) {
 
+//   }
+// }or
+class Manager extends Employee{
+  constructor(first_name, last_name, email, age) {
+    super(first_name, last_name, email, age)
+    this.reports = [];
 
+  }
+  hire(employee) {
+    this.reports.push(employee);
+  }
+  fire(i) {
+    this.reports.splice(i, 1)
+  }
+}
+
+//
 
 ////////// PROBLEM 3 //////////
 
@@ -76,8 +116,42 @@
 */
 
 //Code Here
-
-
+class ProgressiveManager extends Employee {
+  constructor(first_name, last_name, email, age) {
+    super(first_name, last_name, email, age)
+    this.reports = []
+    this.title = 'Not a manager'
+    this.bonus = 0
+  }
+  // eslint-disable-next-line complexity
+  hire (employee) {
+    this.reports.push(employee);
+    if (this.reports.length >= 1 && this.reports.length <= 3){
+      this.title = 'Barely Manager';
+      return this.title;
+    }
+    else if (this.reports.length >= 4 && this.reports.length <= 10){
+      this.title = 'Mostly Manager';
+      return this.title;
+    }
+    else if (this.reports.length >= 11 && this.reports.length <= 50){
+      this.title = 'Manager';
+      return this.title;
+    }
+    else if (this.reports.length >= 51 && this.reports.length <= 100){
+      this.title = 'Manager Plus';
+      return this.title;
+    }
+    else if (this.reports.length >= 101){
+      this.title = 'Bestest Manager';
+      return this.title;
+    }
+  }
+  fire () {
+    this.reports.splice(this.index, 1);
+    this.bonus += 100;
+  }
+}
 
 ////////// PROBLEM 4 - Black Diamond //////////
 
@@ -103,5 +177,19 @@
 */
 
 //Code Here
+class Machine {
+  constructor () {
+    this.widgets_made_count = 0
+    this.wear_and_tear_count = 0
+    this.needs_reboot = false
+  }
+  makeWidgets(){
 
+  }
+  fixMachine () {
 
+  }
+  reboot (){
+
+  }
+}
